@@ -19,3 +19,9 @@ if 'empty' in jobs:
 for i in jobs:
     if i['name']=='empty':
         print(i)
+#deleting a particular job
+
+for job in jobs:
+    if job['name']=='empty':
+        server.delete_job('empty')
+        print('Job deleted successfully!!!')
