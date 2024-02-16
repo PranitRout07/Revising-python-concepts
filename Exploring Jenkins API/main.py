@@ -13,15 +13,21 @@ print("Hello",user['fullName'])
 
 #creating a job 
 jobs = server.get_jobs()
-if 'empty' in jobs:
-    server.create_job('empty', jenkins.EMPTY_CONFIG_XML)
+job_names = []
+
+for job in jobs:
+    job_names.append(job['name'])
+
+if 'Job1' not in job_names:
+    server.create_job('Job1', jenkins.EMPTY_CONFIG_XML)
+    print("Created a job!!!")    
 
 for i in jobs:
-    if i['name']=='empty':
+    if i['name']=='Job1':
         print(i)
 #deleting a particular job
 
 for job in jobs:
-    if job['name']=='empty':
-        server.delete_job('empty')
+    if job['name']=='Job1':
+        server.delete_job('Job1')
         print('Job deleted successfully!!!')
