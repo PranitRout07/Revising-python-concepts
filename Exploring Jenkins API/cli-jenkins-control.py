@@ -16,11 +16,12 @@ def get_jobs():
     return jobs
 
 val=0
-while(val!=3):
+while(val!=4):
     val = int(input("""What do you want to do?
         1.Create a Job
         2.Delete a job
-        3.EXIT     
+        3.Get Pluggins Details
+        4.EXIT     
         """))
     jobs = get_jobs()
     all_jobs = [job['name'] for job in jobs]
@@ -41,5 +42,22 @@ while(val!=3):
         else:
             print('Job is not present,please write a valid job name!!!')
     elif val==3:
+        plugins = server.get_plugins_info()
+        needsUpdate = []
+        noNeedUpdate = []
+        for plugin in plugins:
+            if plugin['hasUpdate']:
+                needsUpdate.append(plugin['longName'])
+            else:
+                noNeedUpdate.append(plugin['longName'])
+        print("Plugins need Update : ")
+        for i in needsUpdate:
+            print(i)
+        print(" ")
+        print(" ")
+        print("Plugins with no new update : ")
+        for i in noNeedUpdate:
+            print(i)
+    elif val==4:
         print("Exit")
         exit(1)
