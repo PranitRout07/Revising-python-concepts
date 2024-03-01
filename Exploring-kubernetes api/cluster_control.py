@@ -2,6 +2,7 @@ import subprocess
 from kubernetes import client, config
 from generate_deployment import generate_deployment_yaml
 from generate_service import generate_service_yaml
+from apply_yaml_files import apply_yaml
 def start_cluster():
     try:
         subprocess.run(["minikube","start"])
@@ -57,6 +58,13 @@ def main():
             print("Fill these lines for creating a service..")
             print()
             take_service_file_inputs()
+            apply_input = input("Do you want to apply the yaml files you have created: ")
+            if apply_input.lower()=="yes":
+                num_of_yaml_files = int(input("How many yaml files you need to apply?: "))
+                i = num_of_yaml_files
+                while i!=0:
+                    apply_yaml()
+                    i= i-1
         elif user_input.lower()=="delete":
             delete_cluster()
         elif user_input.lower()=="no":

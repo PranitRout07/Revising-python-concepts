@@ -1,7 +1,7 @@
 from kubernetes import client, config, utils
 from search_yaml_files import find_file
 
-def main():
+def apply_yaml():
     config.load_kube_config()
     k8s_client = client.ApiClient()
     yaml_file = input("Enter the yaml file name: ")
@@ -13,5 +13,5 @@ if __name__ == "__main__":
     num_of_times = int(input("Enter how many yaml files you have to apply: "))
     i = num_of_times
     while i!=0:
-        main()
+        apply_yaml()
         i= i-1
