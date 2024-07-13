@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block start %}
+
+
+  <div>
+    
+    <a href="/contact/">
+      contact
+    </a>
+    <a href="/about/">
+      about
+    </a>
+  </div>
+  <br>
+
+    <h1>This is index.html response</h1>
+    <br>
+    <p><b><i>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia sunt reprehenderit perspiciatis, nulla quaerat explicabo sequi molestiae vitae, molestias tempora id repellat. Fuga consequuntur quasi, tenetur facilis eveniet quae tempore!</i></b></p>
+    <br>
+    {{people}}
+
+    <table>
+        <tr>
+          <th>No</th>
+          <th>Name</th>
+          <th>Age</th>
+          <th>Can Vote</th>
+        </tr>
+        {% for p in people %}   <!-- while using conditions-->
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.age }}</td>
+          <td>
+            {% if p.age >= 18 %}
+            yes
+            {% else %}
+            no 
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+
+      <br>
+      <h1>
+        {% if "meats" in data %}
+        Yes fruits present
+        {% else %}
+        Not present
+        {% endif %}
+      </h1>
+
+{% endblock %}
