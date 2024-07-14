@@ -30,7 +30,9 @@ urlpatterns = [
     path('contact/',contact),
     path('',home),
     path('about/',about),
-    path('receipes/',receipes)
+    path('receipes/',receipes),
+    path('delete-receipe/<id>/',delete_receipes),
+    path('update-receipe/<id>/',update_receipes)
 ]
 
 if settings.DEBUG:

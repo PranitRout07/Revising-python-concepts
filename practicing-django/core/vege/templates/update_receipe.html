@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block start %}
+
+<div class="container mt-5">  <!-- entype is there as it allows to upload an image from frontend to backend-->
+<form class="col 6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+    {% csrf_token %}  <!-- this has to written to avoid cors error-->
+    <h2>Update Receipe</h2>
+    <hr>
+    <div class="mb-3">
+      <label for="Receipe" class="form-label">Receipe Name</label>
+      <input name="name" value="{{receipe.name}}" type="text" class="form-control" required>
+    </div>
+    <div class="mb-3">
+        <label for="Description" class="form-label">Receipe Description</label>
+        <textarea name="description" value="" class="form-control" required>{{receipe.description}}</textarea>
+    </div>
+    <div class="mb-3">
+        <label for="Image" class="form-label">Receipe Image</label>
+        <input name="image" value="{{receipe.image}}" type="file" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Receipe</button>
+  </form>
+  <div class="d-flex justify-content-end mt-3">
+    <a class="btn btn-primary " href="/receipes">Back</a>
+</div>
+</div>
+
+
+{% endblock %}

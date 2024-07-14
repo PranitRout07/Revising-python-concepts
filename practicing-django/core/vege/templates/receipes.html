@@ -21,18 +21,33 @@
     <button type="submit" class="btn btn-primary">Add Receipe</button>
   </form>
 </div>
-    <div class="container mt-5 d-flex p-6" >
-      <!-- {{allreceipes}} -->
-       {% for receipe in allreceipes %}
-       <div class="card" style="width: 18rem;">
-        <img src="/media/{{ receipe.image }}" class="card-img-top" alt="...">
-        <div class="card-body">
+<div class="container mt-5">
+  <div class="row">
+    {% for receipe in allreceipes %}
+    <div class="col-md-4 mb-4 d-flex align-items-stretch">
+      <div class="card" style="width: 100%;">
+        <img src="/media/{{ receipe.image }}" class="card-img-top" alt="..." style="height: 200px; object-fit: cover;">
+        <div class="card-body d-flex flex-column">
           <h5 class="card-title">{{ receipe.name }}</h5>
-          <p class="card-text">{{ receipe.description}}</p>
+          <p class="card-text" style="flex-grow: 1; overflow-y: auto; max-height: 100px;">{{ receipe.description }}</p>
+          <div class="mt-auto d-flex justify-content-between">
+            <a href="/delete-receipe/{{ receipe.id }}" class="btn btn-danger me-2">
+              <i class="fas fa-trash-alt"></i> 
+            </a>
+            <a href="/update-receipe/{{ receipe.id }}" class="btn btn-primary">
+              <i class="fas fa-edit"></i> 
+            </a>
+          </div>
         </div>
       </div>
-      {% endfor %}
     </div>
+    {% endfor %}
+  </div>
+</div>
+
+
+
+
     
 
 {% endblock %}
