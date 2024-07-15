@@ -2,6 +2,7 @@
 {% block start %}
 
 <div class="container mt-5">  <!-- entype is there as it allows to upload an image from frontend to backend-->
+
 <form class="col 6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
     {% csrf_token %}  <!-- this has to written to avoid cors error-->
     <h2>Add Receipe</h2>
@@ -20,6 +21,8 @@
     </div>
     <button type="submit" class="btn btn-primary">Add Receipe</button>
   </form>
+  <hr>
+
 </div>
 <div class="container mt-5">
   <div class="row">

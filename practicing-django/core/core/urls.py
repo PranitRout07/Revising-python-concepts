@@ -32,7 +32,10 @@ urlpatterns = [
     path('about/',about),
     path('receipes/',receipes),
     path('delete-receipe/<id>/',delete_receipes),
-    path('update-receipe/<id>/',update_receipes)
+    path('update-receipe/<id>/',update_receipes),
+    path('login/',login_page),
+    path('register/',register_page),
+    path('logout/',logout_page)
 ]
 
 if settings.DEBUG:
